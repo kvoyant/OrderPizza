@@ -1,6 +1,8 @@
 package com.tjeit.orderpizza.datas;
 
-public class PizzaStore {
+import java.io.Serializable;
+
+public class PizzaStore implements Serializable {
     public String imgURL;
     public String stroeName;
     public String openTime;

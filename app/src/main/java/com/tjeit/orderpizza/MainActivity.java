@@ -1,8 +1,12 @@
 package com.tjeit.orderpizza;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.tjeit.orderpizza.adapters.PizzaStoreAdapter;
@@ -31,7 +35,21 @@ public class MainActivity extends AppCompatActivity {
 
         setValues();
 
+        act.storeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(MainActivity.this, String.format("%d번쨰 줄 클릭",position), Toast.LENGTH_SHORT).show();
+
+                PizzaStore clickedData = storeList.get(position);
+                Intent intent = new Intent(MainActivity.this, StoreDetailActivity.class);
+                intent.putExtra("앱정보", clickedData);
+                startActivity(intent);
+            }
+        });
+
     }
+
+
 
     private void bindViews() {
         act = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -43,9 +61,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     void fillDatas() {
-        storeList.add(new PizzaStore("https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2","피자헛","15:00 ~ 21:00"));
-        storeList.add(new PizzaStore("https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2","미스터피자","15:00 ~ 22:00"));
-        storeList.add(new PizzaStore("https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2","파파존스","15:00 ~ 23:00"));
-        storeList.add(new PizzaStore("https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2","도미노피자","15:00 ~ 24:00"));
+        storeList.add(new PizzaStore("https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2", "피자헛", "15:00 ~ 21:00"));
+        storeList.add(new PizzaStore("https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2", "미스터피자", "15:00 ~ 22:00"));
+        storeList.add(new PizzaStore("https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2", "파파존스", "15:00 ~ 23:00"));
+        storeList.add(new PizzaStore("https://mblogthumb-phinf.pstatic.net/20141124_182/howtomarry_1416806028308979cg_PNG/Pizza_Hut_logo.svg.png?type=w2", "도미노피자", "15:00 ~ 24:00"));
     }
 }

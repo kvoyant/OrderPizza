@@ -29,13 +29,14 @@ public class PizzaStoreAdapter extends ArrayAdapter<PizzaStore> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
 
-        if(row == null) {
-            row = inf.inflate(R.layout.store_list,null);
+        if (row == null) {
+            row = inf.inflate(R.layout.store_list, null);
         }
 
         PizzaStore storeData = mList.get(position);
         TextView storeNameTxt = row.findViewById(R.id.stroeNameTxt);
         TextView imgURL = row.findViewById(R.id.imgURL);
+//        Glide.with(mContext).load("http://cfs15.tistory.com/image/24/tistory/2008/11/05/18/00/491160cb593e2").into(act.pizzaLogoImgView);
         TextView openTimeTxt = row.findViewById(R.id.openTimeTxt);
 
         storeNameTxt.setText(storeData.stroeName);
